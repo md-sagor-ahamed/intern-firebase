@@ -11,13 +11,23 @@ import { Private } from './Private'
 import { AuthProvider, AuthContext } from './context/Auth.context'
 import { Fade } from '@mui/material';
 
+
+import './utils/firebase.config'
+
+
+
 const AuthRequired = ({children}) => {
   const location = useLocation()
-  const currentUser = React.useContext(AuthContext)
-  if(currentUser){
-    return children
+  const {currentUser, loading} = React.useContext(AuthContext)
+  if(loading){
+    if(currentUser){
+      return children
+    }else{
+      return <Navigate to='/login' state={{ from: location.pathname }} />//
+    }
   }else{
-    return <Navigate to='/login' state={{ from: location.pathname }} />//
+    return "Loading....."
+    console.log("still not render")
   }
 }
 
