@@ -13,16 +13,16 @@ import { AuthContext } from './context/Auth.context'
 
 export const Nav = () => {
     const navigate = useNavigate()
-    const currentUser = React.useContext(AuthContext)
+    const {currentUser} = React.useContext(AuthContext)
     return (
-
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Firebase Auth
             </Typography>
-            {!currentUser && 
+            
+            {!currentUser && (
                 <>
                         <Button component={NavLink} to='/register' sx={{
                             '&.active':{
@@ -35,8 +35,8 @@ export const Nav = () => {
                             }
                         }} color="inherit">Login</Button>
                 </>
-            }
-            {currentUser && 
+            )}
+            {currentUser && (
                 <>
                     <Button component={NavLink} to='/profile' sx={{
                         '&.active':{
@@ -53,7 +53,7 @@ export const Nav = () => {
                         navigate("/login")
                     }} color="inherit">Logout</Button>
                 </>
-            }
+            )}
           </Toolbar>
         </AppBar>
       </Box>

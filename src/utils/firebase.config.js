@@ -47,7 +47,7 @@ const colRef = collection(db, 'notes')
 const docRef = doc(colRef, "zrUpkNmDFB0byxG62Q8R")
 getDoc(docRef)
   .then((doc) => {
-    console.log(doc.data(), doc.id)
+    // console.log(doc.data(), doc.id)
   })
   .catch((err) => console.log(err))
 
