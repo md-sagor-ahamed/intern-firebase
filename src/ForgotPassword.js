@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { sendPasswordResetEmail } from 'firebase/auth';
 
 
@@ -22,7 +22,6 @@ export const ForgotPassword = () => {
     })
     // const {state} = useLocation()
     const navigate = useNavigate()
-    const [searchParams] = useSearchParams()
 
     const handleChange = e => {
       setUserInfo({

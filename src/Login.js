@@ -23,9 +23,9 @@ export const Login = () => {
         email: '',
         password: ''
     })
+    const {enqueueSnackbar} = useSnackbar()
     const {state} = useLocation()
     const navigate = useNavigate()
-    const {enqueueSnackbar} = useSnackbar()
     const handleChange = e => {
       setUserInfo({
         ...userInfo,
@@ -42,6 +42,7 @@ export const Login = () => {
         navigate(state?.from || '/profile')
         // setSuccess(true)
       }catch(err){
+        enqueueSnackbar(err.message, {variant: 'error'})
         console.log(err.message)
       }
     }
