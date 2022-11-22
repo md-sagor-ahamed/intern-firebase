@@ -30,7 +30,6 @@ export default function Note({note}) {
         console.log(err.message)
        }
     }
-    console.log(note)
   return (
     <Card variant="outlined">
         <CardHeader
