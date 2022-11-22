@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link as Navigate, useNavigate } from 'react-router-dom'
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
 
 import { auth } from "./utils/firebase.config"
@@ -49,6 +49,9 @@ export const Register = () => {
       //submitting to firebase
       try{
         const user = await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+        updateProfile(auth.currentUser, {
+          displayName: userInfo.firstName + " " + userInfo.lastName
+        })
         enqueueSnackbar("Register Sucessfull, Please login", {variant: 'success'})
         navigate('/profile')
         // setSuccess(true)

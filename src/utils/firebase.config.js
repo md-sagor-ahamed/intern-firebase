@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { collection, addDoc, getDocs, getDoc, doc, DocumentChange, onSnapshot, query, getFirestore } from "firebase/firestore"
+import { collection, getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAZ65j9uU5w3Pqu7ZNz8DzbR_xUIR-wrkg",
@@ -17,7 +17,7 @@ export const auth = getAuth(app)
 const db = getFirestore(app)
 
 
-const colRef = collection(db, 'notes')
+export const notesColRef = collection(db, 'notes')
 
 // getDocs(colRef).then((snapshot) => {
 //   const notes = []
@@ -44,18 +44,18 @@ const colRef = collection(db, 'notes')
 
 
 
-const docRef = doc(colRef, "zrUpkNmDFB0byxG62Q8R")
-getDoc(docRef)
-  .then((doc) => {
-    // console.log(doc.data(), doc.id)
-  })
-  .catch((err) => console.log(err))
+// const docRef = doc(colRef, "zrUpkNmDFB0byxG62Q8R")
+// getDoc(docRef)
+//   .then((doc) => {
+//     // console.log(doc.data(), doc.id)
+//   })
+//   .catch((err) => console.log(err))
 
-addDoc(colRef, {
-  title: "title",
-  description: "Description Form vscode",
-  user: {
-    name: "hasan",
-    id: 123456
-  }
-})
+// addDoc(colRef, {
+//   title: "title",
+//   description: "Description Form vscode",
+//   user: {
+//     name: "hasan",
+//     id: 123456
+//   }
+// })

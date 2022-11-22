@@ -24,6 +24,11 @@ export const Nav = () => {
             
             {!currentUser && (
                 <>
+                            <Button component={NavLink} to='/notes' sx={{
+                            '&.active':{
+                                bgColor: 'primary.dark'
+                            }
+                        }} color="inherit">Notes</Button>
                         <Button component={NavLink} to='/register' sx={{
                             '&.active':{
                                 bgColor: 'primary.dark'
@@ -38,11 +43,21 @@ export const Nav = () => {
             )}
             {currentUser && (
                 <>
+                    <Button component={NavLink} to='/notes' sx={{
+                            '&.active':{
+                                bgColor: 'primary.dark'
+                            }
+                        }} color="inherit">Notes</Button>
                     <Button component={NavLink} to='/profile' sx={{
                         '&.active':{
                             bgColor: 'primary.dark'
                         }
                     }} color="inherit">Profile</Button>
+                    <Button component={NavLink} to='/notes/add' sx={{
+                        '&.active':{
+                            bgColor: 'primary.dark'
+                        }
+                    }} color="inherit">Add Note</Button>
                     <Button component={NavLink} to='/private' sx={{
                         '&.active':{
                             bgColor: 'primary.dark'

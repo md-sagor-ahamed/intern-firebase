@@ -11,6 +11,7 @@ export const AuthProvider = ({children}) => {
         return onAuthStateChanged(auth, user => {
           if(!user){
             setLoading(true)
+            setCurrentUser(null)
           }else{
             setCurrentUser(user)
             setLoading(true)

@@ -13,6 +13,10 @@ import { Fade } from '@mui/material';
 
 
 import './utils/firebase.config'
+import Notes from './Notes';
+import AddNote from './AddNote';
+import EditNote from './EditNote';
+import { NoteProvider } from './context/Note.context';
 
 
 
@@ -34,19 +38,25 @@ const AuthRequired = ({children}) => {
 function App() {
   return (
     <SnackbarProvider maxSnack={3} anchorOrigin={{vertical: 'top', horizontal: 'right'}} TransitionComponent={Fade}>
-    <AuthProvider>
-      <BrowserRouter>
-      <Nav />
-        <Routes>
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/forgot-password' element={<ForgotPassword />} />
-          <Route path='/reset-password' element={<ResetPassword />} />
-          <Route path='/profile' element={<AuthRequired><Profile /></AuthRequired>} />
-          <Route path='/private' element={<AuthRequired><Private /></AuthRequired>} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      <NoteProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <Nav />
+            <Routes>
+              <Route index element={<Notes />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/notes' element={<Notes />} />
+              <Route path='/notes/add' element={<AuthRequired><AddNote /></AuthRequired>} />
+              <Route path='/notes/edit/:noteId' element={<AuthRequired><EditNote /></AuthRequired>} />
+              <Route path='/forgot-password' element={<ForgotPassword />} />
+              <Route path='/reset-password' element={<ResetPassword />} />
+              <Route path='/profile' element={<AuthRequired><Profile /></AuthRequired>} />
+              <Route path='/private' element={<AuthRequired><Private /></AuthRequired>} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </NoteProvider>
     </SnackbarProvider>
   );
 }

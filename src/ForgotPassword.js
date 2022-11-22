@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { confirmPasswordReset } from 'firebase/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 
 import { auth } from "./utils/firebase.config"
@@ -31,11 +31,11 @@ export const ForgotPassword = () => {
       })
     }
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
       e.preventDefault()
-      //submitting to firebase
+      // submitting to firebase
       try{
-        await confirmPasswordReset(auth, searchParams.get('oobCode'), userInfo.password)
+        await sendPasswordResetEmail(auth, userInfo.email)
         console.log('password reset email successfully sent')
         navigate('/login')
         // setSuccess(true)
